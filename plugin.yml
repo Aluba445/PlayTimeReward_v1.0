@@ -1,8 +1,0 @@
-name: PlayTimeReward
-main: aluba.TimeReward.Main
-version: 3.0
-api-version: 1.13
-author: Albua
-softdepend: [PlaceholderAPI]
-commands:
-    ptr:

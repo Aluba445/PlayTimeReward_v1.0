@@ -49,7 +49,8 @@ public class Main extends JavaPlugin implements Listener{ //Extending JavaPlugin
         
         reloadConfig();
         reload();
-        
+
+        addTime();
         auto_delete();
     }
     
@@ -131,5 +132,14 @@ public class Main extends JavaPlugin implements Listener{ //Extending JavaPlugin
 		},20 , 20);
 	}
 	
-	
+	public void addTime(){
+    	Bukkit.getScheduler().runTaskTimer(Main.plugin , () -> {
+			for(Player player : Bukkit.getOnlinePlayers()){
+				dataConfig.set(player.getUniqueId() + ".time", ((int) dataConfig.getInt(player.getUniqueId() + ".time") + 1));
+				dataSave();
+
+			}
+			Bukkit.broadcastMessage(new Date().toLocaleString());
+		}, 0 , 1200);
+	}
 }
